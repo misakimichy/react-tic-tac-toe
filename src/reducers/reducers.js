@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import * as types from './action/types'
-import * as actions from './actions/actions'
+import * as actions from './../actions/actions'
+import * as types from './../actions/types'
 
 const board = () => [
     [0, 0, 0],
@@ -16,17 +16,57 @@ const move = (board, { player, row, col }) => {
 }
 
 
-const boardReducer = (state = [], action) => {
+const boardReducer = (state = [[]], action) => {
     switch(action.type) {
         case types.NEW_GAME :
-            return emptyBoard()
+            return board()
         case types.MOVE :
             return move(state, action.payload)
         default:
-            return sate
+            return state
     }
 }
 
-export default combineReducers({
-    board: boardRedicer,
+const gameoverReducer = (state = false, action) => {
+    switch(action.type) {
+        case types.NEW_GAME :
+            return false
+        case types.GAMEOVER :
+            return true
+        case types.WINNER :
+            return true
+        default :
+            return state
+    }
+}
+
+const winnerReducer = (state = -1, action) => {
+    switch(action.type) {
+        case types.WINNER :
+            return action.payload
+        case types.NEW_GAME :
+            return -1
+        default:
+            return state
+    }
+}
+
+const playerReducer = (state = 1, action) => {
+    switch(action.type) {
+        case types.PLAYER :
+            return action.payload
+        case types.NEW_GAME :
+            return 1
+        default:
+            return state
+    }
+}
+
+const reducer = combineReducers({
+    board: boardReducer,
+    gameStatus: gameoverReducer,
+    winner:winnerReducer,
+    player: playerReducer
 })
+
+export default reducer

@@ -4,7 +4,7 @@ export const newGame = () => ({
     types: types.NEW_GAME
 })
 
-export const gameOver = () => ({
+export const gameover = () => ({
     type: types.GAMEOVER
 })
 
