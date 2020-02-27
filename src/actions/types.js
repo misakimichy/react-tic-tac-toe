@@ -1,0 +1,5 @@
+export const NEW_GAME = 'GAME_NEW'
+export const GAMEOVER = 'GAME_OVER'
+export const MOVE = 'GAME_MOCE'
+export const PLAYER = 'GAME_PLAYER'
+export const WINNER = 'GAME_WINNER'
