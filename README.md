@@ -1,68 +1,43 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Tic Tac Toe | React and Redux 
+#### _React: Last Update 02/27/2020_
 
-## Available Scripts
+## Reference
+I followed this tutorial posts to crete this project: [Build a Tix Tac Toe Game With React/Redux, Babel, Webpack, and Material-UI](https://medium.com/@vanister/learn-react-redux-by-making-a-tic-tac-toe-game-part-1-of-5-dc9111ca09ad)
+Thank you Van Huynh, I learned a lot from your articles.
 
-In the project directory, you can run:
+### React managing
+Following re-ducks pattern to organize this project: [ducks-modular-redux](
+https://github.com/erikras/ducks-modular-redux)
+![rubber ducks](https://farm3.staticflickr.com/2431/3835850741_cb567d6397.jpg)
 
-### `yarn start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Installation:
+1. Clone this repo:
+```
+$ git clone https://github.com/misakimichy/react-tic-tac-toe.git
+```
 
-### `yarn test`
+2. Install npm:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+$ npm install
+```
 
-### `yarn build`
+3. Run the project:
+```
+$ npm run start 
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. Open up localhost:8080
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Known Bugs
+- No known bugs at this time
 
-### `yarn eject`
+## Support and contact details
+I welcome any feedbacks and questions to misaki.koonce@gmail.com
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Technologies Used
+Git, GitHub, Webpack, ReactJS and Redux
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
