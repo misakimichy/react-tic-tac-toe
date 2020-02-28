@@ -12,6 +12,7 @@ const checkWinner = (board, player) => dispatch => {
     }
 }
 
+// Argument: player - current player
 const switchTurn = (player, row, col) => dispatch => {
     let nextPlayer
     switch(player) {

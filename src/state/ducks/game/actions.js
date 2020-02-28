@@ -1,7 +1,7 @@
 import * as types from './types'
 
 export const newGame = () => ({
-    types: types.NEW_GAME
+    type: types.NEW_GAME
 })
 
 export const gameover = () => ({
@@ -9,7 +9,7 @@ export const gameover = () => ({
 })
 
 export const movePlayer = (player, row, col) => ({
-    types: types.MOVE,
+    type: types.MOVE,
     payload: { player, row, col }
 })
 

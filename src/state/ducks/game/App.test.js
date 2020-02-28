@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import App from './../../../components/App'
+import App from './../../../views/App'
 import reducer from './reducers'
 import * as actions from './actions'
 import * as operations from './operations'
