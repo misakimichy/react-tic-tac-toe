@@ -177,7 +177,7 @@ describe('Game Deck', () => {
   })
   
   describe('operations', () => {
-    const { checkWinner, playTurn } = operations
+    const { checkWinner, switchTurn } = operations
     
     it('should dispatch a winner', () => {
       const dispatch = jest.fn()
@@ -227,11 +227,11 @@ describe('Game Deck', () => {
       const move1 = actions.movePlayer(player, row, col)
       const switch1 = actions.switchPlayer(2)
 
-      playTurn(player, row, col)(dispatch)
+      switchTurn(player, row, col)(dispatch)
 
       expect(dispatch).toHaveBeenCalledTimes(2)
       expect(dispatch.mock.calls[0][0]).toEqual(move1)
-      expect(dispatch.moco.calls[1][0]).toEqual(switch1)
+      expect(dispatch.mock.calls[1][0]).toEqual(switch1)
 
       player = 2
       row = 1
@@ -240,7 +240,7 @@ describe('Game Deck', () => {
       const move2 = actions.movePlayer(player, row, col)
       const switch2 = actions.switchPlayer(1)
 
-      playTurn(player, row, col)(dispatch)
+      switchTurn(player, row, col)(dispatch)
 
       expect(dispatch).toHaveBeenCalledTimes(4)
       expect(dispatch.mock.calls[2][0]).toEqual(move2)
