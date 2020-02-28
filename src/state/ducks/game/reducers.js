@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import * as actions from './../actions/actions'
-import * as types from './../actions/types'
+import * as actions from './actions'
+import * as types from './types'
 
 const board = () => [
     [0, 0, 0],

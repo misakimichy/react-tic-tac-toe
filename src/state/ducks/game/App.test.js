@@ -1,8 +1,9 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import App from './components/App'
-import reducer from './reducers/reducers'
-import * as actions from './actions/actions'
+import App from '../../components/App'
+import reducer from './reducers'
+import * as actions from './actions'
+import * as operations from './operations'
 
 describe('Game Deck', () => {
   const board = [
@@ -173,5 +174,19 @@ describe('Game Deck', () => {
       
       expect(result2).toEqual(expectedState2)
     })
-  })                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+  })
+  
+  describe('operations', () => {
+      const dispatch = jest.fn()
+      const board = player1WinBoard
+      const player = 1
+      const winnerAction = actions.winner(1)
+      const gameoverAction = actions.gameover()
+
+      CheckWinner(board, player)(dispatch)
+
+      expect(dispatch).toHaveBeenCalledTimes(2)
+      expect(dispatch.mock.calls[0][0]).toEqual(winnerAction)
+      expect(dispatch.mock.calls[1][0]).toEqual(gameoverAction)
+  })
 })
