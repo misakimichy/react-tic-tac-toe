@@ -39,5 +39,5 @@ $ npm run start
 I welcome any feedbacks and questions to misaki.koonce@gmail.com
 
 ## Technologies Used
-Git, GitHub, Webpack, ReactJS and Redux
+Git, GitHub, Webpack, ReactJS, Redux and Jest
 
