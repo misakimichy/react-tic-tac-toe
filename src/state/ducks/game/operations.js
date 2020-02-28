@@ -1,5 +1,5 @@
-import { newGame, gameover, switchPlayer, winner, movePlayer } from './../actions/actions'
-import { isWinner, isDraw } from '../utils/game'
+import { newGame, gameover, switchPlayer, winner, movePlayer } from './actions'
+import { isWinner, isDraw } from './../../utils/game'
 
 // Check if a plyer win or players are draw
 const checkWinner = (board, player) => dispatch => {

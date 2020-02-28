@@ -1,12 +1,12 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import App from '../../components/App'
+import App from './../../../components/App'
 import reducer from './reducers'
 import * as actions from './actions'
 import * as operations from './operations'
 
 describe('Game Deck', () => {
-  const board = [
+  const emptyBoard = [
     [0, 0, 0],
     [0, 0, 0],
     [0, 0, 0]
@@ -46,14 +46,14 @@ describe('Game Deck', () => {
 
     it('should start a new game', () => {
       const state = {
-        board: board,
+        board: emptyBoard,
         gameStatus: false,
         player: 1,
         winner: -1
       }
 
       const expectedState = {
-        board: board.slice(),
+        board: emptyBoard.slice(),
         gameStatus: false,
         player: 1,
         winner: -1
@@ -67,14 +67,14 @@ describe('Game Deck', () => {
 
     it('should end a game', () => {
       const state = {
-        board: board,
+        board: emptyBoard,
         gameStatus: true,
         player: 1,
         winner: -1
       }
 
       const expectedState = {
-        board: board,
+        board: emptyBoard,
         gameStatus: true,
         player: 1,
         winner: -1
@@ -143,14 +143,14 @@ describe('Game Deck', () => {
 
     it('should siwtch players', () => {
       const state = {
-        board: board,
+        board: emptyBoard,
         gameStatus: false,
         player: 1,
         winner: -1
       }
 
       const expectedState = {
-        board: board,
+        board: emptyBoard,
         gameStatus: false,
         player: 2,
         winner: -1
@@ -163,7 +163,7 @@ describe('Game Deck', () => {
       
       const state2 = {...expectedState}
       const expectedState2 = {
-        board: board,
+        board: emptyBoard,
         gameStatus: false,
         player: 1,
         winner: -1
@@ -177,16 +177,74 @@ describe('Game Deck', () => {
   })
   
   describe('operations', () => {
+    const { checkWinner, playTurn } = operations
+    
+    it('should dispatch a winner', () => {
       const dispatch = jest.fn()
-      const board = player1WinBoard
+      const board = player1Win
       const player = 1
       const winnerAction = actions.winner(1)
       const gameoverAction = actions.gameover()
 
-      CheckWinner(board, player)(dispatch)
+      checkWinner(board, player)(dispatch)
 
       expect(dispatch).toHaveBeenCalledTimes(2)
       expect(dispatch.mock.calls[0][0]).toEqual(winnerAction)
       expect(dispatch.mock.calls[1][0]).toEqual(gameoverAction)
+    })
+    
+    it('should dispatch a draw', () => {
+      const dispatch = jest.fn()
+      const board = drawBoard
+      const player = 1
+
+      const winnerAction = actions.winner(0)
+      const gameoverAction = actions.gameover()
+
+      checkWinner(board, player)(dispatch)
+      expect(dispatch).toHaveBeenCalledTimes(2)
+      expect(dispatch.mock.calls[0][0]).toEqual(winnerAction)
+      expect(dispatch.mock.calls[0][0]).toEqual(gameoverAction)
+    })
+
+    it('should not dispatch if game is in progress', () => {
+      const dispatch = jest.fn()
+      const board = emptyBoard
+      const player = 1
+
+      checkWinner(board, player)(dispatch)
+
+      expect(dispatch).not.toHaveBeenCalled()
+    })
+
+    it('should play a turn', () => {
+      const dispatch = jest.fn()
+
+      let player = 1
+      let row = 0
+      let col = 0
+
+      const move1 = actions.movePlayer(player, row, col)
+      const switch1 = actions.switchPlayer(2)
+
+      playTurn(player, row, col)(dispatch)
+
+      expect(dispatch).toHaveBeenCalledTimes(2)
+      expect(dispatch.mock.calls[0][0]).toEqual(move1)
+      expect(dispatch.moco.calls[1][0]).toEqual(switch1)
+
+      player = 2
+      row = 1
+      col = 1
+
+      const move2 = actions.movePlayer(player, row, col)
+      const switch2 = actions.switchPlayer(1)
+
+      playTurn(player, row, col)(dispatch)
+
+      expect(dispatch).toHaveBeenCalledTimes(4)
+      expect(dispatch.mock.calls[2][0]).toEqual(move2)
+      expect(dispatch.mock.calls[3][0]).toEqual(switch2)
+    })
   })
 })
